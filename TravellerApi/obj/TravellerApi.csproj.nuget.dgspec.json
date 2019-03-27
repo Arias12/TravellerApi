@@ -43,6 +43,10 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.2.0, )"
+            },
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
               "target": "Package",
@@ -53,6 +57,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.3, )"
             },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",

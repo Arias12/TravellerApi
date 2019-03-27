@@ -1,0 +1,11 @@
+E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\bin\Debug\netcoreapp2.2\TravellerApi.deps.json
+E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\bin\Debug\netcoreapp2.2\TravellerApi.runtimeconfig.json
+E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\bin\Debug\netcoreapp2.2\TravellerApi.runtimeconfig.dev.json
+E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\bin\Debug\netcoreapp2.2\TravellerApi.dll
+E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\obj\Debug\netcoreapp2.2\TravellerApi.csprojAssemblyReference.cache
+E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\obj\Debug\netcoreapp2.2\TravellerApi.csproj.CoreCompileInputs.cache
+E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\obj\Debug\netcoreapp2.2\TravellerApi.RazorAssemblyInfo.cache
+E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\obj\Debug\netcoreapp2.2\TravellerApi.RazorAssemblyInfo.cs
+E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\obj\Debug\netcoreapp2.2\TravellerApi.AssemblyInfoInputs.cache
+E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\obj\Debug\netcoreapp2.2\TravellerApi.AssemblyInfo.cs
+E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\obj\Debug\netcoreapp2.2\TravellerApi.RazorTargetAssemblyInfo.cache
