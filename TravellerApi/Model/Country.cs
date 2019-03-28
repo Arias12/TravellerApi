@@ -9,9 +9,13 @@ namespace TravellerApi.Model
 {
     public class Country
     {
+        #region Country
         [Key] 
         public Guid CountryId { get; set; }
         public string Name { get; set; }
         public int Population { get; set; }
+        #endregion
+
+        public ICollection<City> Cities { get; set; }
     }
 }

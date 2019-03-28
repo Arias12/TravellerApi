@@ -9,3 +9,6 @@ E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\obj\Debug\ne
 E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\obj\Debug\netcoreapp2.2\TravellerApi.AssemblyInfoInputs.cache
 E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\obj\Debug\netcoreapp2.2\TravellerApi.AssemblyInfo.cs
 E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\obj\Debug\netcoreapp2.2\TravellerApi.RazorTargetAssemblyInfo.cache
+E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\bin\Debug\netcoreapp2.2\TravellerApi.pdb
+E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\obj\Debug\netcoreapp2.2\TravellerApi.dll
+E:\Programowanie\GithubClone\TravellerApi\TravellerApi\TravellerApi\obj\Debug\netcoreapp2.2\TravellerApi.pdb
