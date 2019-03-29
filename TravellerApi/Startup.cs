@@ -32,8 +32,12 @@ namespace TravellerApi
 
             services.AddDbContext<TravellerDbContext>(options =>
                 options.UseInMemoryDatabase("TravellerDb"));
+           
+            #region ServiceExtensionClass
+            services.ConfigureCors();
 
-            
+            services.ConfigureIISIntegration();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +54,8 @@ namespace TravellerApi
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("CorsPolicy");
+            app.UseStaticFiles();
             app.UseMvc();
         }
     }
