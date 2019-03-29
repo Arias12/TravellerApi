@@ -28,14 +28,14 @@ namespace TravellerApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<TravellerDbContext>(options =>
-                options.UseInMemoryDatabase("TravellerDb"));
+           
            
             #region ServiceExtensionClass
             services.ConfigureCors();
-
+            services.ConfigureMySqlContext(Configuration);
             services.ConfigureIISIntegration();
             #endregion
         }

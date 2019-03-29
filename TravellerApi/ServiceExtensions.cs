@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TravellerApi.Model;
 
 namespace TravellerApi
 {
@@ -30,6 +33,12 @@ namespace TravellerApi
             {
 
             });
+        }
+
+        public static void ConfigureMySqlContext(this IServiceCollection services, IConfiguration config)
+        {
+            var connectionString = config["connection:connectionString"];
+            services.AddDbContext<TravellerDbContext>(o => o.UseInMemoryDatabase(connectionString));
         }
     }
 }

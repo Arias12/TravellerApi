@@ -8,6 +8,9 @@ namespace TravellerApi.Model
 {
     public class TravellerDbContext : DbContext
     {
+        public TravellerDbContext(DbContextOptions<TravellerDbContext> options) : base(options)
+        { }
+
         public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<Comment> Comment { get; set; }
