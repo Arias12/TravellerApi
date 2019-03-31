@@ -37,6 +37,7 @@ namespace TravellerApi
             services.ConfigureCors();
             services.ConfigureMySqlContext(Configuration);
             services.ConfigureIISIntegration();
+            services.ConfigureRepositoryWrapper();
             #endregion
         }
 

@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TravellerApi.Model;
+using TravellerApi.Repository;
 
 namespace TravellerApi
 {
@@ -39,6 +40,12 @@ namespace TravellerApi
         {
             var connectionString = config["connection:connectionString"];
             services.AddDbContext<TravellerDbContext>(o => o.UseInMemoryDatabase(connectionString));
+        }
+
+     
+        public static void ConfigureRepositoryWrapper(this IServiceCollection services)
+        {
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
         }
     }
 }
