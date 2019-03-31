@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravellerApi.Repository
 {
-    interface IRepository<T>
+    pubic interface IRepository<T>
     {
         IEnumerable<T> GetAll();
         IEnumerable<T> Find(Expression<Func<T, bool>> expression);
