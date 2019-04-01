@@ -16,11 +16,5 @@ namespace TravellerApi.Model
         public virtual DbSet<Comment> Comment { get; set; }
         public virtual DbSet<InterestingPlace> InterestingPlace { get; set; }
 
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=TravellerDb;Trusted_Connection=True;MultipleActiveResultSets=true");
-            base.OnConfiguring(optionsBuilder);
-        }
     }
 }
