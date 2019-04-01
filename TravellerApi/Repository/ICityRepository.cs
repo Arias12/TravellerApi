@@ -8,5 +8,6 @@ namespace TravellerApi.Repository
 {
     public interface ICityRepository : IRepository<City>
     {
+        City GetCity(Guid cityId);
     }
 }
