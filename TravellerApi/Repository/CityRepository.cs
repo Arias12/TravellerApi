@@ -10,7 +10,6 @@ namespace TravellerApi.Repository
     {
         public CityRepository(TravellerDbContext travellerContext) : base(travellerContext)
         {
-            
         }
 
         public City GetCity(Guid cityId)

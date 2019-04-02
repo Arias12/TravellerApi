@@ -8,5 +8,9 @@ namespace TravellerApi.Repository
 {
     public interface ICountryRepository : IRepository<Country>
     {
+        Country GetCountry(Guid id);
+        void UpdateCountry(Country foundCountry, Country country);
+        void CreateCountry(Country country);
+        void DeleteCountry(Country country);
     }
 }

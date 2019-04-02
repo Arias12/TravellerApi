@@ -11,5 +11,28 @@ namespace TravellerApi.Repository
         public CountryRepository(TravellerDbContext travellerContext) : base(travellerContext)
         {
         }
+
+        public void CreateCountry(Country country)
+        {
+            country.CountryId = Guid.NewGuid();
+            Create(country);
+            Save();
+        }
+
+        public void DeleteCountry(Country country)
+        {
+            Delete(country);
+            Save();
+        }
+
+        public Country GetCountry(Guid countryID)
+        {
+            return Find(country => country.CountryId.Equals(countryID)).FirstOrDefault();
+        }
+
+        public void UpdateCountry(Country foundCountry, Country country)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
