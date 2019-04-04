@@ -8,5 +8,8 @@ namespace TravellerApi.Repository
 {
     public interface IInterestingPlaceRepository : IRepository<InterestingPlace>
     {
+        void CreateInterestingPlace(InterestingPlace interestingPlace);
+        void DeleteInterestingPlace(InterestingPlace interestingPlace);
+        InterestingPlace GetInterestingPlace(Guid interestingPlaceId);
     }
 }

@@ -16,5 +16,23 @@ namespace TravellerApi.Repository
         {
             return Find(city => city.CityId.Equals(cityId)).FirstOrDefault();
         }
+
+        public void DeleteCity(City city)
+        {
+            Delete(city);
+            Save();
+        }
+
+        public void CreateCity(City city)
+        {
+            city.CityId = Guid.NewGuid();
+            Create(city);
+            Save();
+        }
+
+
+
+
+
     }
 }
