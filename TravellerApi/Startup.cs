@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,13 +32,31 @@ namespace TravellerApi
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-           
-           
+            //var mappingConfig = new MapperConfiguration(mc =>
+            //{
+            //    mc.AddProfile(new MapperClass());
+            //});
+
+            //IMapper mapper = mappingConfig.CreateMapper();
+            //services.AddSingleton(mapper);
+
+            Mapper.Initialize(cfg =>
+                {
+                    cfg.AddProfile<MapperClass>();
+                    cfg.ValidateInlineMaps = false;
+                });
+                                            
+
+            services.AddAutoMapper();
+
+
+
             #region ServiceExtensionClass
             services.ConfigureCors();
             services.ConfigureMySqlContext(Configuration);
             services.ConfigureIISIntegration();
             services.ConfigureRepositoryWrapper();
+
             #endregion
         }
 

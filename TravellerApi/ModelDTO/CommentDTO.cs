@@ -7,5 +7,7 @@ namespace TravellerApi.ModelDTO
 {
     public class CommentDTO
     {
+        public string Description { get; set; }
+        public decimal Rating { get; set; }
     }
 }

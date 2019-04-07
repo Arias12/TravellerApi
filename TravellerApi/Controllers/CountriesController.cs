@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using TravellerApi.Model;
+using TravellerApi.ModelDTO;
 using TravellerApi.Repository;
 
 namespace TravellerApi.Controllers
@@ -13,20 +15,29 @@ namespace TravellerApi.Controllers
     public class CountriesController : ControllerBase
     {
         private IRepositoryWrapper _repository;
+        private readonly IMapper _mapper;
 
-        public CountriesController(IRepositoryWrapper repository)
+        public CountriesController(IRepositoryWrapper repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult GetAll()
-        {
+        { 
+
             try
             {
                 var countries = _repository.Country.GetAll();
 
-                return Ok(countries);
+                if (countries == null)
+                {
+                    return NotFound();
+                }
+
+                var model = Mapper.Map<CountryDTO>(countries);
+                return Ok(model);
             }
 
             catch (Exception ex)

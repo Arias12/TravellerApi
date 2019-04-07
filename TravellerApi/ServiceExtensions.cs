@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -47,5 +48,7 @@ namespace TravellerApi
         {
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
         }
+
+        
     }
 }
