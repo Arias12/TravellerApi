@@ -11,6 +11,7 @@ namespace TravellerApi.Repository
         public CountryRepository(TravellerDbContext travellerContext) : base(travellerContext)
         {
         }
+        
 
         public void CreateCountry(Country country)
         {
@@ -30,9 +31,10 @@ namespace TravellerApi.Repository
             return Find(country => country.CountryId.Equals(countryID)).FirstOrDefault();
         }
 
-        public void UpdateCountry(Country foundCountry, Country country)
+        public void UpdateCountry(Guid id, Country country)
         {
-            throw new NotImplementedException();
+            country.CountryId = id;
+            Update(country);
         }
     }
 }

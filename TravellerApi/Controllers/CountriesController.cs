@@ -94,31 +94,11 @@ namespace TravellerApi.Controllers
             }
         }
 
-        //[HttpPut("id")]
-        //public IActionResult PutCountry(Guid id, [FromBody]Country country)
-        //{
-        //    try
-        //    {
-        //        if (country == null)
-        //        {
-        //            return BadRequest("Country object is null");
-        //        }
+        [HttpPut("{id}")]
+        public IActionResult UpdateCoubtry(Guid id, [FromBody] Country country)
+        {
 
-            //        if (!ModelState.IsValid)
-            //        {
-            //            return BadRequest("Invalid model object");
-            //        }
-
-            //        var findCountry =_repository.Country.GetCountry(id);
-            //        if (findCountry == null)
-            //        {
-            //            return NotFound("Country not found");
-            //        }
-
-            //        _repository.Country.UpdateCountry(findCountry, country);
-
-            //    }
-            //}
+        }
 
             [HttpDelete("{id}")]
             public IActionResult DeleteCountry(Guid id)
