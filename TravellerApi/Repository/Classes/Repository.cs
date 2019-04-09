@@ -9,42 +9,42 @@ namespace TravellerApi.Repository
 {
     public abstract class Repository<T> : IRepository<T> where T : class
     {
-        protected TravellerDbContext TravellerContext { get; set; }
+        protected TravellerDbContext _travellerDbContext { get; set; }
 
 
         public Repository(TravellerDbContext travellerContext)
         {
-            TravellerContext = travellerContext;
+            _travellerDbContext = travellerContext;
         }
 
         public IEnumerable<T> GetAll()
         {
-            return TravellerContext.Set<T>();
+            return _travellerDbContext.Set<T>();
         }
 
         public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
         {
-            return TravellerContext.Set<T>().Where(expression);
+            return _travellerDbContext.Set<T>().Where(expression);
         }
 
         public void Create(T entity)
         {
-            TravellerContext.Set<T>().Add(entity);
+            _travellerDbContext.Set<T>().Add(entity);
         }
 
         public void Update(T entity)
         {
-            TravellerContext.Set<T>().Update(entity);
+            _travellerDbContext.Set<T>().Update(entity);
         }
 
         public void Delete(T entity)
         {
-            TravellerContext.Set<T>().Remove(entity);
+            _travellerDbContext.Set<T>().Remove(entity);
         }
 
-        public void Save()
+        public bool Save()
         {
-            TravellerContext.SaveChanges();
+            return (_travellerDbContext.SaveChanges() >= 0);
         }
     }
 }

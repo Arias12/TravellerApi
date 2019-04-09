@@ -29,9 +29,9 @@ namespace TravellerApi.Controllers
 
             try
             {
-                var countries = _repository.Country.GetAll();
+                var countries = _repository.Country.GetAll().ToList();
 
-                if (countries == null)
+                if (countries.Count == 0)
                 {
                     return NotFound();
                 }
@@ -96,7 +96,7 @@ namespace TravellerApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateCoubtry(Guid id, [FromBody] Country country)
+        public IActionResult UpdateCoubtry(Guid id, [FromBody] CountryDTO country)
         {
             try
             {
@@ -111,8 +111,14 @@ namespace TravellerApi.Controllers
                 {
                     return NotFound();
                 }
-                
-                _repository.Country.UpdateCountry(id, country);
+
+                Mapper.Map(country, foundCountry);
+                _repository.Country.UpdateCountry(id, foundCountry);
+
+                if (!_repository.Country.Save())
+                {
+                    throw new Exception("Updating country failed on save");
+                }
                 return Ok();
 
             }
@@ -135,6 +141,10 @@ namespace TravellerApi.Controllers
 
                     _repository.Country.Delete(country);
 
+                    if (!_repository.Country.Save())
+                    {
+                        throw new Exception("Deleting country failed on save");
+                    }
                     return NoContent();
                 }
 
