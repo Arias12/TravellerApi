@@ -26,9 +26,9 @@ namespace TravellerApi.Repository
             Save();
         }
 
-        public Country GetCountry(Guid countryID)
+        public Country GetCountry(Guid countryId)
         {
-            return Find(country => country.CountryId.Equals(countryID)).FirstOrDefault();
+            return Find(country => country.CountryId.Equals(countryId)).FirstOrDefault();
         }
 
         public void UpdateCountry(Guid id, Country country)

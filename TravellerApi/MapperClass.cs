@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using TravellerApi.Model;
 using TravellerApi.ModelDTO;
 
@@ -16,7 +12,6 @@ namespace TravellerApi
             CreateMap<Country, CountryDTO>().ReverseMap();
             CreateMap<Comment, CommentDTO>().ReverseMap();
             CreateMap<InterestingPlace, InterestingPlaceDTO>().ReverseMap();
-
         }
     }
 }

@@ -14,7 +14,7 @@ namespace TravellerApi.Controllers
     [ApiController]
     public class CountriesController : ControllerBase
     {
-        private IRepositoryWrapper _repository;
+        private readonly IRepositoryWrapper _repository;
         private readonly IMapper _mapper;
 
         public CountriesController(IRepositoryWrapper repository, IMapper mapper)
@@ -52,15 +52,15 @@ namespace TravellerApi.Controllers
         {
             try
             {
+                
                 var country = _repository.Country.GetCountry(id);
                 if (country == null)
                 {
                     return NotFound();
                 }
-                else
-                {
-                    return Ok(country);
-                }
+
+                var model = Mapper.Map<CountryDTO>(country);
+                return Ok(model);
 
             }
             catch (Exception ex)
@@ -84,7 +84,8 @@ namespace TravellerApi.Controllers
                     return BadRequest("Invalid model object");
                 }
 
-                _repository.Country.CreateCountry(country);
+                var model = Mapper.Map<Country>(country);
+                _repository.Country.CreateCountry(model);
                 return CreatedAtRoute("CountryById", new {id = country.CountryId}, country);
             }
 
@@ -97,7 +98,28 @@ namespace TravellerApi.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateCoubtry(Guid id, [FromBody] Country country)
         {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest("Invalid model object");
+                }
 
+                var foundCountry =_repository.Country.GetCountry(id);
+
+                if (foundCountry == null)
+                {
+                    return NotFound();
+                }
+                
+                _repository.Country.UpdateCountry(id, country);
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Server error");
+            }
         }
 
             [HttpDelete("{id}")]
