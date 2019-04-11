@@ -13,5 +13,6 @@ namespace TravellerApi.Repository
         void UpdateCountry(Guid id, Country country);
         void CreateCountry(Country country);
         void DeleteCountry(Country country);
+        bool CountryExist(Guid id);
     }
 }

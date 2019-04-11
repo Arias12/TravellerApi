@@ -36,5 +36,13 @@ namespace TravellerApi.Repository
             country.CountryId = id;
             Update(country);
         }
+
+        public bool CountryExist(Guid countryId)
+        {
+            var foundCountry =Find(country => country.CountryId.Equals(countryId)).FirstOrDefault();
+            if (foundCountry == null)
+                return false;
+            return true;
+        }
     }
 }
