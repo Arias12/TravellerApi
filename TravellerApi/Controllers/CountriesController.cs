@@ -29,14 +29,14 @@ namespace TravellerApi.Controllers
 
             try
             {
-                var countries = _repository.Country.GetAll().ToList();
+                List<Country> countryItems = _repository.Country.GetAll().ToList();
 
-                if (countries.Count == 0)
+                if (countryItems.Count() == 0)
                 {
-                    return NotFound();
+                    return NotFound("No Countries found");
                 }
 
-                var model = Mapper.Map<CountryDTO>(countries);
+                var model = Mapper.Map<CountryDTO>(countryItems);
                 return Ok(model);
             }
 

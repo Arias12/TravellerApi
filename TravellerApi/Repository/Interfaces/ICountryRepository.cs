@@ -14,5 +14,6 @@ namespace TravellerApi.Repository
         void CreateCountry(Country country);
         void DeleteCountry(Country country);
         bool CountryExist(Guid id);
+        IEnumerable<Country> GetAll();
     }
 }
