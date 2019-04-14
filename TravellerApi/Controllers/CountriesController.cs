@@ -47,7 +47,7 @@ namespace TravellerApi.Controllers
 
         }
 
-        [HttpGet("{id}", Name = "CountryById")]
+        [HttpGet("{id:Guid}", Name = "CountryById")]
         public IActionResult GetCountry(Guid id)
         {
             try
