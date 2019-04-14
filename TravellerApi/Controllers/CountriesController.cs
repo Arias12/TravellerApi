@@ -36,7 +36,7 @@ namespace TravellerApi.Controllers
                     return NotFound("No Countries found");
                 }
 
-                var model = Mapper.Map<CountryDTO>(countryItems);
+                var model = Mapper.Map<List<CountryDTO>>(countryItems);
                 return Ok(model);
             }
 
@@ -69,6 +69,29 @@ namespace TravellerApi.Controllers
             }
         }
 
+
+        [HttpGet("{name}", Name = "CountryByName")]
+        public IActionResult GetCountry(string name)
+        {
+            try
+            {
+
+                var country = _repository.Country.GetCountry(name);
+                if (country == null)
+                {
+                    return NotFound();
+                }
+
+                var model = Mapper.Map<CountryDTO>(country);
+                return Ok(model);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error happened");
+            }
+        }
+
         [HttpPost]
         public IActionResult CreateCountry([FromBody] Country country)
         {
@@ -85,7 +108,13 @@ namespace TravellerApi.Controllers
                 }
 
                 var model = Mapper.Map<Country>(country);
+                if (!_repository.Country.Save())
+                {
+                    throw new Exception("Updating country failed on save");
+                }
+
                 _repository.Country.CreateCountry(model);
+
                 return CreatedAtRoute("CountryById", new {id = country.CountryId}, country);
             }
 

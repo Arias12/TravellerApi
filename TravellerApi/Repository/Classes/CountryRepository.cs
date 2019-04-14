@@ -12,7 +12,7 @@ namespace TravellerApi.Repository
         public CountryRepository(TravellerDbContext travellerContext) : base(travellerContext)
         {
         }
-        
+
 
         public void CreateCountry(Country country)
         {
@@ -40,7 +40,7 @@ namespace TravellerApi.Repository
 
         public bool CountryExist(Guid countryId)
         {
-            var foundCountry =Find(country => country.CountryId.Equals(countryId)).FirstOrDefault();
+            var foundCountry = Find(country => country.CountryId.Equals(countryId)).FirstOrDefault();
             if (foundCountry == null)
                 return false;
             return true;
@@ -50,6 +50,12 @@ namespace TravellerApi.Repository
         {
             List<Country> countryItems = _travellerDbContext.Country.ToList();
             return countryItems;
+        }
+
+        public Country GetCountry(string name)
+        {
+            var foundCountry = Find(country => country.Name.Equals(name)).FirstOrDefault();
+            return foundCountry;
         }
     }
 }
