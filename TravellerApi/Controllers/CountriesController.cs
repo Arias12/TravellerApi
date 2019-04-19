@@ -10,7 +10,7 @@ using TravellerApi.Repository;
 
 namespace TravellerApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/countries")]
     [ApiController]
     public class CountriesController : ControllerBase
     {
