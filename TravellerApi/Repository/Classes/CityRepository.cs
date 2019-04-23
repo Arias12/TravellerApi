@@ -17,6 +17,11 @@ namespace TravellerApi.Repository
             return Find(city => city.CityId.Equals(cityId)).FirstOrDefault();
         }
 
+        public City GetCity(string name)
+        {
+            return Find(city => city.Name.Equals(name)).FirstOrDefault();
+        }
+
         public void DeleteCity(City city)
         {
             Delete(city);
@@ -28,6 +33,11 @@ namespace TravellerApi.Repository
             city.CityId = Guid.NewGuid();
             Create(city);
             Save();
+        }
+
+        public IEnumerable<City> GetCitiesForCountry(string countryName)
+        {
+            return _travellerDbContext.City.Where(c => c.Country.Name == countryName).AsEnumerable();
         }
 
 

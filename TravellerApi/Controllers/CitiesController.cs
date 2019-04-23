@@ -43,5 +43,49 @@ namespace TravellerApi.Controllers
                 return StatusCode(500, "An error happened");
             }
         }
+
+        [HttpGet("{id:Guid}", Name="CityById")]
+        public IActionResult GetCity(Guid id)
+        {
+            try
+            {
+                var city = _repository.City.GetCity(id);
+
+                if (city == null)
+                {
+                    return NotFound("Cannot find current City");
+                }
+
+                var model = Mapper.Map<CityDTO>(city);
+                return Ok(model);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error happened");
+            }
+        }
+
+        [HttpGet("{name}", Name = "CityByName")]
+        public IActionResult GetCity(string name)
+        {
+            try
+            {
+                var city = _repository.City.GetCity(name);
+                if (city == null)
+                {
+                    return NotFound("Cannot find current City");
+                }
+
+                var model = Mapper.Map<CityDTO>(city);
+                return Ok(model);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error happened");
+            }
+
+        }
+
+
     }
 }
