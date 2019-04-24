@@ -13,5 +13,6 @@ namespace TravellerApi.Repository
         void  DeleteCity(City city);
         void  CreateCity(City city);
         IEnumerable<City> GetCitiesForCountry(string countryName);
+        void UpdateCity(Guid id, City city);
     }
 }

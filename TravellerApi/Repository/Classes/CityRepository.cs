@@ -40,6 +40,12 @@ namespace TravellerApi.Repository
             return _travellerDbContext.City.Where(c => c.Country.Name == countryName).AsEnumerable();
         }
 
+        public void UpdateCity(Guid id, City city)
+        {
+            city.CityId = id;
+            Update(city);
+        }
+
 
 
 
