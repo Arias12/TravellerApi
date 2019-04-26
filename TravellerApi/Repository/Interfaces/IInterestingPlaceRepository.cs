@@ -11,5 +11,8 @@ namespace TravellerApi.Repository
         void CreateInterestingPlace(InterestingPlace interestingPlace);
         void DeleteInterestingPlace(InterestingPlace interestingPlace);
         InterestingPlace GetInterestingPlace(Guid interestingPlaceId);
+        InterestingPlace GetInterestingPlace(string interestingPlaceName);
+        IEnumerable<InterestingPlace> GetPlacesForCity(string cityName);
+        void UpdateInterestingPlace(Guid id, InterestingPlace interestingPlace);
     }
 }

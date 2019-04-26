@@ -17,6 +17,16 @@ namespace TravellerApi.Repository
             return Find(interestingPlace => interestingPlace.InterestingPlaceId.Equals(interestingPlaceId)).FirstOrDefault();
         }
 
+        public InterestingPlace GetInterestingPlace(string interestingPlaceName)
+        {
+            return Find(interestingPlace => interestingPlace.Name.Equals(interestingPlaceName)).FirstOrDefault();
+        }
+
+        public IEnumerable<InterestingPlace> GetPlacesForCity(string cityName)
+        {
+            return _travellerDbContext.InterestingPlace.Where(i => i.City.Name == cityName).AsEnumerable();
+        }
+
         public void DeleteInterestingPlace(InterestingPlace interestingPlace)
         {
             Delete(interestingPlace);
@@ -28,6 +38,12 @@ namespace TravellerApi.Repository
             interestingPlace.InterestingPlaceId= Guid.NewGuid();
             Create(interestingPlace);
             Save();
+        }
+
+        public void UpdateInterestingPlace(Guid id, InterestingPlace interestingPlace)
+        {
+            interestingPlace.InterestingPlaceId = id;
+            Update(interestingPlace);
         }
     }
 }
