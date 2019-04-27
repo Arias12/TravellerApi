@@ -88,11 +88,11 @@ namespace TravellerApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetCitiesForCountry(string name)
+        public IActionResult GetCitiesForCountry(string countryName)
         {
             try
             {
-                List<City> cityItems = _repository.City.GetCitiesForCountry(name).ToList();
+                List<City> cityItems = _repository.City.GetCitiesForCountry(countryName).ToList();
                 if (cityItems.Count() == 0)
                 {
                     return NotFound("No cities found");
@@ -125,7 +125,7 @@ namespace TravellerApi.Controllers
 
                 if (!_repository.City.Save())
                 {
-                    throw new Exception("Updating country failed on save");
+                    throw new Exception("Creating country failed on save");
                 }
 
                 var model = Mapper.Map<City>(city);
@@ -150,6 +150,10 @@ namespace TravellerApi.Controllers
                     return BadRequest("Invalid model object");
                 }
 
+                if (city == null)
+                {
+                    return BadRequest("City object is null");
+                }
                 var foundCity = _repository.City.GetCity(name);
 
                 if (foundCity == null)
