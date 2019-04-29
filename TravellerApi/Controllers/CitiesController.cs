@@ -24,27 +24,6 @@ namespace TravellerApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            try
-            {
-                List<City> cityItems = _repository.City.GetAll().ToList();
-
-                if (cityItems.Count() == 0)
-                {
-                    return NotFound("Cities not found");
-                }
-
-                var model = Mapper.Map<List<CityDTO>>(cityItems);
-                return Ok(model);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "An error happened");
-            }
-        }
-
         [HttpGet("{id:Guid}", Name="CityById")]
         public IActionResult GetCity(Guid id)
         {
