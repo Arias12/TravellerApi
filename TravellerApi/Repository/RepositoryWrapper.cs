@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TravellerApi.Model;
+﻿using TravellerApi.Model;
 
 namespace TravellerApi.Repository
 {
     public class RepositoryWrapper : IRepositoryWrapper
     {
-        private TravellerDbContext _travellerContext;
         private ICityRepository _city;
-        private ICountryRepository _country;
         private ICommentRepository _comment;
+        private ICountryRepository _country;
         private IInterestingPlaceRepository _interestingPlace;
+        private readonly TravellerDbContext _travellerContext;
 
 
         public RepositoryWrapper(TravellerDbContext travellerContext)
@@ -24,10 +20,7 @@ namespace TravellerApi.Repository
         {
             get
             {
-                if (_city == null)
-                {
-                    _city = new CityRepository(_travellerContext);
-                }
+                if (_city == null) _city = new CityRepository(_travellerContext);
 
                 return _city;
             }
@@ -37,10 +30,7 @@ namespace TravellerApi.Repository
         {
             get
             {
-                if (_country == null)
-                {
-                    _country = new CountryRepository(_travellerContext);
-                }
+                if (_country == null) _country = new CountryRepository(_travellerContext);
 
                 return _country;
             }
@@ -50,10 +40,7 @@ namespace TravellerApi.Repository
         {
             get
             {
-                if (_interestingPlace == null)
-                {
-                    _interestingPlace = new InterestingPlaceRepository(_travellerContext);
-                }
+                if (_interestingPlace == null) _interestingPlace = new InterestingPlaceRepository(_travellerContext);
 
                 return _interestingPlace;
             }
@@ -63,10 +50,7 @@ namespace TravellerApi.Repository
         {
             get
             {
-                if (_comment == null)
-                {
-                    _comment = new CommentRepository(_travellerContext);
-                }
+                if (_comment == null) _comment = new CommentRepository(_travellerContext);
 
                 return _comment;
             }

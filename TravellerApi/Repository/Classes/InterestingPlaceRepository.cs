@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using TravellerApi.Model;
 
 namespace TravellerApi.Repository
@@ -14,7 +13,8 @@ namespace TravellerApi.Repository
 
         public InterestingPlace GetInterestingPlace(Guid interestingPlaceId)
         {
-            return Find(interestingPlace => interestingPlace.InterestingPlaceId.Equals(interestingPlaceId)).FirstOrDefault();
+            return Find(interestingPlace => interestingPlace.InterestingPlaceId.Equals(interestingPlaceId))
+                .FirstOrDefault();
         }
 
         public InterestingPlace GetInterestingPlace(string interestingPlaceName)
@@ -35,7 +35,7 @@ namespace TravellerApi.Repository
 
         public void CreateInterestingPlace(InterestingPlace interestingPlace)
         {
-            interestingPlace.InterestingPlaceId= Guid.NewGuid();
+            interestingPlace.InterestingPlaceId = Guid.NewGuid();
             Create(interestingPlace);
             Save();
         }

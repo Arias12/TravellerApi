@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,14 +22,10 @@ namespace TravellerApi
             });
         }
 
-        
-        
+
         public static void ConfigureIISIntegration(this IServiceCollection services)
         {
-            services.Configure<IISOptions>(options =>
-            {
-
-            });
+            services.Configure<IISOptions>(options => { });
         }
 
         public static void ConfigureMySqlContext(this IServiceCollection services, IConfiguration config)
@@ -43,12 +34,10 @@ namespace TravellerApi
             services.AddDbContext<TravellerDbContext>(o => o.UseInMemoryDatabase(connectionString));
         }
 
-     
+
         public static void ConfigureRepositoryWrapper(this IServiceCollection services)
         {
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
         }
-
-        
     }
 }

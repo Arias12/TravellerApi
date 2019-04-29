@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TravellerApi.Model;
-
-namespace TravellerApi.ModelDTO
+﻿namespace TravellerApi.ModelDTO
 {
     public class InterestingPlaceDTO
     {

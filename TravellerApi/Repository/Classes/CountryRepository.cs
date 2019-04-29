@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using TravellerApi.Model;
 
 namespace TravellerApi.Repository
@@ -48,7 +46,7 @@ namespace TravellerApi.Repository
 
         public IEnumerable<Country> GetAll()
         {
-            List<Country> countryItems = _travellerDbContext.Country.ToList();
+            var countryItems = _travellerDbContext.Country.ToList();
             return countryItems;
         }
 

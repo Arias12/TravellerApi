@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using TravellerApi.Model;
 
 namespace TravellerApi
 {
@@ -29,7 +19,6 @@ namespace TravellerApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             //var mappingConfig = new MapperConfiguration(mc =>
@@ -41,17 +30,17 @@ namespace TravellerApi
             //services.AddSingleton(mapper);
 
             Mapper.Initialize(cfg =>
-                {
-                    cfg.AddProfile<MapperClass>();
-                    cfg.ValidateInlineMaps = false;
-                });
-                                            
+            {
+                cfg.AddProfile<MapperClass>();
+                cfg.ValidateInlineMaps = false;
+            });
+
 
             services.AddAutoMapper();
 
 
-
             #region ServiceExtensionClass
+
             services.ConfigureCors();
             services.ConfigureMySqlContext(Configuration);
             services.ConfigureIISIntegration();
@@ -64,14 +53,10 @@ namespace TravellerApi
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
             else
-            {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
-            }
 
             app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");

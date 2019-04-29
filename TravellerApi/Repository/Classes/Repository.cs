@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using TravellerApi.Model;
 
 namespace TravellerApi.Repository
 {
     public abstract class Repository<T> : IRepository<T> where T : class
     {
-        protected TravellerDbContext _travellerDbContext { get; set; }
-
-
         public Repository(TravellerDbContext travellerContext)
         {
             _travellerDbContext = travellerContext;
         }
+
+        protected TravellerDbContext _travellerDbContext { get; set; }
 
         public IEnumerable<T> GetAll()
         {
@@ -44,7 +42,7 @@ namespace TravellerApi.Repository
 
         public bool Save()
         {
-            return (_travellerDbContext.SaveChanges() >= 0);
+            return _travellerDbContext.SaveChanges() >= 0;
         }
     }
 }
